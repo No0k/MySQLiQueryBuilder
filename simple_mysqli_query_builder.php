@@ -1,5 +1,5 @@
 <?php
-    $mysqli = new mysqli('localhost', 'root', '', 'test');
+    $mysqli = new mysqli('localhost', 'username', 'pass', 'DBname');
     $mysqli->set_charset("utf8");
 
     class simple_query_builder
@@ -47,14 +47,15 @@
                 }
             }
             $query = "INSERT INTO $tableName ($queryCol) VALUES ($queryVal)";
-            $res = $mysqli->query($query);
+            $res   = $mysqli->query($query);
             if (!$res) {
                 if ($this->devMode == 1) {
-                    echo "Error: <b>Wrong MySQL INSERT syntax.</b> <br>"." \r\n";
+                    echo "Error: <b>Wrong MySQL INSERT syntax.</b> <br>" . " \r\n";
                     echo $query . "<br>" . " \r\n";
                 }
 
-                return false; exit();
+                return false;
+                exit();
             } else {
                 return true;
             }
@@ -73,17 +74,21 @@
                     $querySET = $querySET . ',' . "`$key`" . " = " . $val;
                 }
             }
-            if ($where != null) { $query = "UPDATE $tableName SET $querySET WHERE $where"; }
-            else { $query = "UPDATE $tableName SET $querySET"; }
+            if ($where != null) {
+                $query = "UPDATE $tableName SET $querySET WHERE $where";
+            } else {
+                $query = "UPDATE $tableName SET $querySET";
+            }
 
             $res = $mysqli->query($query);
 
             if (!$res) {
                 if ($this->devMode == 1) {
-                    echo "Error: <b>Wrong MySQL UPDATE syntax.</b> <br>"." \r\n";
+                    echo "Error: <b>Wrong MySQL UPDATE syntax.</b> <br>" . " \r\n";
                     echo $query . "<br>" . " \r\n";
                 }
-                return false; exit();
+                return false;
+                exit();
             } else {
                 return true;
             }
@@ -98,10 +103,11 @@
             $res    = $mysqli->query($query . " LIMIT $limit, $offset");
             if (!$res) {
                 if ($this->devMode == 1) {
-                    echo "Error: <b>Wrong MySQL SELECT syntax.</b> <br>"." \r\n";
+                    echo "Error: <b>Wrong MySQL SELECT syntax.</b> <br>" . " \r\n";
                     echo $query . "<br>" . " \r\n";
                 }
-                return $result; exit();
+                return $result;
+                exit();
             }
 
             while ($row = $res->fetch_assoc()) {
