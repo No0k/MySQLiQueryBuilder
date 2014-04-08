@@ -2,7 +2,7 @@
     $mysqli = new mysqli('localhost', 'root', '', 'test');
     $mysqli->set_charset("utf8");
 
-    class myMYSQL
+    class simple_query_builder
     {
         public $parms = array();
         /* Developer Mode */
