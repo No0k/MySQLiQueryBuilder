@@ -95,12 +95,12 @@
         }
 
         /* Build SELECT Query with default LIMIT */
-        public function select($query, $limit = 0, $offset = 50)
+        public function select($query, $offset = 0, $limit = 50)
         {
             global $mysqli;
 
             $result = '';
-            $res    = $mysqli->query($query . " LIMIT $limit, $offset");
+            $res    = $mysqli->query($query . " LIMIT $offset, $limit");
             if (!$res) {
                 if ($this->devMode == 1) {
                     echo "Error: <b>Wrong MySQL SELECT syntax.</b> <br>" . " \r\n";
