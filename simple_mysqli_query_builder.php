@@ -90,7 +90,7 @@
                 return false;
                 exit();
             } else {
-                return true;
+                return $mysqli->affected_rows;
             }
         }
 
