@@ -3,7 +3,7 @@ MySqLiQuerryBuilder
 
 Examples:
 
-1) Simple SELECT.
+1) Simple SELECT.\n
     $mysql = new simple_query_builder();
     /* $mysql->select returns assoc array, if result is 0 error, it returns false  */
     $res = $mysql->select("SELECT * FROM `sha1`", 0, 50); //0 - offset, 50 - limit
