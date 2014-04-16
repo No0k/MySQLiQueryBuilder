@@ -11,7 +11,7 @@ Examples:
     echo $res[0]['pass'] ."<br>"; //Print 1 result, at first row.
     print_R($res); //Print array
     
-2)Simple INSERT.
+2) Simple INSERT.
 
     $mysql = new simple_query_builder();
     // $mysql->insert returns true if query is OK, and false if not OK
@@ -20,7 +20,7 @@ Examples:
     $mysql->addCustom('activeTime', 'NOW() + INTERVAL 1 DAY'); //Add non protected value, good for MySQL fucntions
     $mysql->insert('users'); //Insert into table `users`
     
-3)Simple UPDATE.
+3) Simple UPDATE.
 
     $mysql = new simple_query_builder();
     // $mysql->insert returns true if query is OK, and false if not OK 
