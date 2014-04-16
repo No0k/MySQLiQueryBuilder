@@ -1,5 +1,6 @@
 <?php
-    $mysqli = new mysqli('localhost', 'username', 'pass', 'DBname');
+    /* if you use 1 DB in your project, u can connect in here */
+    $mysqli = new mysqli('localhost', 'root', 'pass', 'DBname');
     $mysqli->set_charset("utf8");
 
     class simple_query_builder
@@ -55,7 +56,6 @@
                 }
 
                 return false;
-                exit();
             } else {
                 return true;
             }
@@ -88,7 +88,6 @@
                     echo $query . "<br>" . " \r\n";
                 }
                 return false;
-                exit();
             } else {
                 return $mysqli->affected_rows;
             }
@@ -106,8 +105,7 @@
                     echo "Error: <b>Wrong MySQL SELECT syntax.</b> <br>" . " \r\n";
                     echo $query . "<br>" . " \r\n";
                 }
-                return $result;
-                exit();
+                return false;
             }
 
             while ($row = $res->fetch_assoc()) {
