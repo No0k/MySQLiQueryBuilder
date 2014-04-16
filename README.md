@@ -6,9 +6,9 @@ Examples:
 1) Simple SELECT.
 
     $mysql = new simple_query_builder();
-    $mysql->devMode = 1;//Developer mode, if error it print your SQL query, Default is 0
+    $mysql->devMode = 1;                //Developer mode, if error it print your SQL query, Default is 0
     // $mysql->select returns assoc array, if result is 0 error, it returns false
-    $res = $mysql->select("SELECT * FROM `sha1`", 0, 50); //0 - offset, 50 - limit
+    $res = $mysql->select("SELECT * FROM `sha1`", 0, 50);                       //0 - offset, 50 - limit
     if ($res)
     {
         echo $res[0]['pass'] ."<br>"; //Print 1 result, at first row.
