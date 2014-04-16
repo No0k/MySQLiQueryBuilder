@@ -6,7 +6,7 @@ Examples:
 1) Simple SELECT.
     $mysql = new simple_query_builder();
     /* $mysql->select returns assoc array, if result is 0 error, it returns false  */
-    $res = $mysql->select("SELECT * FROM sha1", 0, 50); //0 - offset, 50 - limit
+    $res = $mysql->select("SELECT * FROM `sha1`", 0, 50); //0 - offset, 50 - limit
     echo $res[0]['pass'] ."<br>"; //Print 1 result, at first row.
     print_R($res); //Print array
     
