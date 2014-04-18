@@ -57,7 +57,9 @@
 
                 return false;
             } else {
-                return true;
+                $ret = $mysqli->insert_id;
+                if ($ret == 0) $ret = true;
+                return $ret;
             }
         }
 
