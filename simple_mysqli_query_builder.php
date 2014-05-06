@@ -1,34 +1,34 @@
 <?php
     /* if you use 1 DB in your project, u can connect in here */
-    $mysqli = new mysqli('localhost', 'root', 'pass', 'DBname');
+    $mysqli = new mysqli('localhost', 'username', 'pass', 'dbName');
     $mysqli->set_charset("utf8");
 
-       class simple_query_builder
+    class simple_query_builder
     {
         public $parms = array();
-        # Developer Mode
+        /* Developer Mode */
         public $devMode = 0;
 
-        # Protect from SQL Injections
+        /* Protect from SQL Injections */
         public function sqlProt($str)
         {
             global $mysqli;
             return "'" . $mysqli->real_escape_string($str) . "'";
         }
 
-        # Add field name and protected value
+        /* Add field name and protected value */
         public function add($name, $value)
         {
             $this->parms[$name] = $this->sqlProt($value);
         }
 
-        # Add field name and non protected value (USE for example: NOW() + INTERVAL 1 DAY)
+        /* Add field name and non protected value (USE for example: NOW() + INTERVAL 1 DAY) */
         public function addCustom($name, $value)
         {
             $this->parms[$name] = $value;
         }
 
-        # Build INSERT query
+        /* Build INSERT query */
         public function insert($tableName)
         {
             global $mysqli;
@@ -105,7 +105,7 @@
 
             $this->parms = array(); //Reset Params
 
-            $result = '';
+            $result = null;
             $res    = $mysqli->query($query . " LIMIT $offset, $limit");
             if (!$res) {
                 if ($this->devMode == 1) {
